@@ -1,26 +1,52 @@
-body { margin:0; background:#121212; color:white; font-family:Arial, sans-serif; }
-.top { padding:15px; background:black; position:sticky; top:0; }
-.top h1 { color:#1db954; font-size:22px; }
-.top input { width:100%; padding:10px; border-radius:20px; border:none; margin-top:10px; }
+const audio = document.getElementById('audio');
+const cover = document.getElementById('cover');
+const title = document.getElementById('title');
+const artist = document.getElementById('artist');
 
 
-#list { padding-bottom:90px; }
+let i = 0;
+let playing = false;
 
 
-.track { display:flex; align-items:center; padding:12px; border-bottom:1px solid #222; }
-.track img { width:50px; height:50px; border-radius:6px; margin-right:12px; }
-.track span { color:#b3b3b3; font-size:14px; }
-.track:hover { background:#1db954; color:black; }
+const playlist = [
+{ title:'Largado às Traças', artist:'Zé Neto & Cristiano', src:'musicas/zeneto.mp3', cover:'capas/zeneto.jpg' },
+{ title:'Infiel', artist:'Marília Mendonça', src:'musicas/marilia.mp3', cover:'capas/marilia.jpg' },
+{ title:'Cê Que Sabe', artist:'Cristiano Araújo', src:'musicas/cristiano.mp3', cover:'capas/cristiano.jpg' }
+];
 
 
-.player { position:fixed; bottom:0; width:100%; background:#181818; display:flex; flex-direction:column; padding:8px; }
-.player .topline { display:flex; align-items:center; }
-.player img { width:55px; height:55px; border-radius:6px; margin-right:10px; }
-.player .info { flex:1; }
-.controls { display:flex; justify-content:center; margin-top:5px; }
-.progress { display:flex; align-items:center; gap:6px; font-size:12px; }
-.progress input { flex:1; }
-.player img { width:55px; height:55px; border-radius:6px; margin-right:10px; }
-.player .info { flex:1; }
-.player .controls button { background:none; border:none; color:white; font-size:20px; margin:0 5px; }
-.player .controls button:hover { color:#1db954; }
+const progressBar = document.getElementById('progressBar');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+
+
+audio.addEventListener('timeupdate', () => {
+const percent = (audio.currentTime / audio.duration) * 100;
+progressBar.value = percent || 0;
+currentTimeEl.innerText = formatTime(audio.currentTime);
+durationEl.innerText = formatTime(audio.duration);
+});
+
+
+progressBar.addEventListener('input', () => {
+audio.currentTime = (progressBar.value / 100) * audio.duration;
+});
+
+
+function formatTime(time){ if(!time) return '0:00'; const m=Math.floor(time/60); const s=Math.floor(time%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+
+
+function play(index){
+i=index;
+audio.src=playlist[i].src;
+cover.src=playlist[i].cover;
+title.innerText=playlist[i].title;
+artist.innerText=playlist[i].artist;
+audio.play();
+playing=true;
+}
+
+
+function toggle(){ if(!audio.src) return; playing?audio.pause():audio.play(); playing=!playing; }
+function next(){ i=(i+1)%playlist.length; play(i); }
+function prev(){ i=(i-1+playlist.length)%playlist.length; play(i); }
