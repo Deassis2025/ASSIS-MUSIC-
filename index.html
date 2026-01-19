@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assis Music</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+
+<header class="top">
+<h1>Assis Music</h1>
+<input type="text" id="search" placeholder="Buscar música">
+</header>
+
+
+<main id="list">
+<div class="track" onclick="play(0)">
+<img src="capas/zeneto.jpg">
+<div>
+<strong>Largado às Traças</strong>
+<span>Zé Neto & Cristiano</span>
+</div>
+</div>
+
+
+<div class="track" onclick="play(1)">
+<img src="capas/marilia.jpg">
+<div>
+<strong>Infiel</strong>
+<span>Marília Mendonça</span>
+</div>
+</div>
+
+
+<div class="track" onclick="play(2)">
+<img src="capas/cristiano.jpg">
+<div>
+<strong>Cê Que Sabe</strong>
+<span>Cristiano Araújo</span>
+</div>
+</div>
+</main>
+
+
+<footer class="player">
+<img id="cover">
+<div class="info">
+<strong id="title">Escolha uma música</strong>
+<span id="artist"></span>
+</div>
+<div class="controls">
+<button onclick="prev()">⏮</button>
+<button onclick="toggle()">⏯</button>
+<button onclick="next()">⏭</button>
+</div>
+<div class="progress">
+<span id="currentTime">0:00</span>
+<input type="range" id="progressBar" value="0" min="0" max="100">
+<span id="duration">0:00</span>
+</div>
+<audio id="audio"></audio>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+  </html>
