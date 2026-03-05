@@ -1,9 +1,15 @@
-body { margin:0; background:#121212; color:white; font-family:Arial, sans-serif; }
-.top { padding:15px; background:black; position:sticky; top:0; }
-.top h1 { color:#1db954; font-size:22px; }
-.top input { width:100%; padding:10px; border-radius:20px; border:none; margin-top:10px; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212; /* Fundo padrão Spotify */
+    color: #FFFFFF;
+}
 
+/* Melhorando o contraste de textos secundários */
+.text-secondary {
+    color: #b3b3b3; /* Cinza claro que não agride o olho no dark mode */
+}
 #list { padding-bottom:90px; }
 
 
