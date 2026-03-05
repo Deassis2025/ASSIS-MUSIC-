@@ -44,43 +44,12 @@
 </main>
 
 
-<footer class="player">
-<img id="cover">
-<div class="info">
-<strong id="title">Escolha uma música</strong>
-<span id="artist"></span>
-</div>
-<div class="controls">
-<button onclick="prev()">⏮</button>
-<button onclick="toggle()">⏯</button>
-<button onclick="next()">⏭</button>
-</div>
-<div class="spotify-player">
-<div class="controls">
-<button id="prev"><i class="fas fa-step-backward"></i></button>
-<button id="play-pause"><i class="fas fa-play"></i></button>
-<button id="next"><i class="fas fa-step-forward"></i></button>
-    </div>
-    
-    <div class="progress-container">
-        <span id="current-time">0:00</span>
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-        <span id="duration">0:00</span>
-    </div>
-    
-    <audio id="audio" src="sua-musica.mp3"></audio>
-</div>
-
-
-<script src="script.js"></script>
-</body><footer class="main-player">
-    <div class="now-playing-info">
+<footer class="player-footer">
+    <div class="now-playing">
         <img src="img/logo.png" alt="Capa" id="player-album-art">
-        <div class="track-details">
-            <h4 id="player-title">Selecione uma música</h4>
-            <p id="player-artist">Assis Music</p>
+        <div class="track-info">
+            <h4 id="track-title">Selecione uma música</h4>
+            <p id="track-artist">Assis Music</p>
         </div>
     </div>
 
@@ -90,18 +59,20 @@
             <button id="play-btn" class="play-main"><i class="fas fa-play"></i></button>
             <button id="next-btn"><i class="fas fa-step-forward"></i></button>
         </div>
-        <div class="progress-wrapper">
+        <div class="progress-bar-area">
             <span id="current-time">0:00</span>
-            <div class="progress-bar-container" id="progress-container">
+            <div class="progress-container" id="progress-container">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
             <span id="total-duration">0:00</span>
         </div>
     </div>
 
-    <div class="volume-container">
+    <div class="volume-box">
         <i class="fas fa-volume-up"></i>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.8">
+        <div class="volume-bar-bg">
+            <div class="volume-bar-fill" style="width: 80%;"></div>
+        </div>
     </div>
 
     <audio id="main-audio" src=""></audio>
