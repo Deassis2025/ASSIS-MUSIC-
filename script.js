@@ -5,19 +5,25 @@ const progressContainer = document.getElementById('progress-container');
 const currentTimeEl = document.getElementById('current-time');
 const durationEl = document.getElementById('total-duration');
 
-// Função para formatar o tempo de segundos para 0:00
 function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
     const min = Math.floor(seconds / 60);
     const sec = Math.floor(seconds % 60);
     return `${min}:${sec < 10 ? '0' + sec : sec}`;
 }
 
-// Tocar ou Pausar
+function playSong(file, title, artist, cover) {
+    audio.src = file;
+    document.getElementById('player-title').innerText = title;
+    document.getElementById('player-artist').innerText = artist;
+    document.getElementById('player-album-art').src = cover;
+    
+    audio.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+}
+
 playBtn.addEventListener('click', () => {
-    if (audio.src === "" || audio.src.endsWith('/')) {
-        alert("Selecione uma música primeiro!");
-        return;
-    }
+    if (!audio.src) return;
     if (audio.paused) {
         audio.play();
         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -27,28 +33,18 @@ playBtn.addEventListener('click', () => {
     }
 });
 
-// Atualiza a barra e os números do cronômetro
 audio.addEventListener('timeupdate', () => {
     const { duration, currentTime } = audio;
     if (duration) {
         const percent = (currentTime / duration) * 100;
         progressFill.style.width = `${percent}%`;
-        
         currentTimeEl.innerText = formatTime(currentTime);
         durationEl.innerText = formatTime(duration);
     }
 });
 
-// Faz a barra ser clicável (mudar posição da música)
 progressContainer.addEventListener('click', (e) => {
     const width = progressContainer.clientWidth;
     const clickX = e.offsetX;
-    const duration = audio.duration;
-    audio.currentTime = (clickX / width) * duration;
+    audio.currentTime = (clickX / width) * audio.duration;
 });
-
-const playlist = [
-{ title:'Largado às Traças', artist:'Zé Neto & Cristiano', src:'musicas/zeneto.mp3', cover:'capas/zeneto.jpg' },
-{ title:'Infiel', artist:'Marília Mendonça', src:'musicas/marilia.mp3', cover:'capas/marilia.jpg' },
-{ title:'Cê Que Sabe', artist:'Cristiano Araújo', src:'musicas/cristiano.mp3', cover:'capas/cristiano.jpg' }
-];
