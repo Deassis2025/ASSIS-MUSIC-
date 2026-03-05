@@ -1,80 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assis Music</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assis Music</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <header>
+        <h1>Assis Music</h1>
+        <input type="text" id="search" placeholder="Buscar música...">
+    </header>
 
-<header class="top">
-<h1>Assis Music</h1>
-<input type="text" id="search" placeholder="Buscar música">
-</header>
-
-
-<main id="list">
-<div class="track" onclick="play(0)">
-<img src="capas/zeneto.jpg">
-<div>
-<strong>Largado às Traças</strong>
-<span>Zé Neto & Cristiano</span>
-</div>
-</div>
-
-
-<div class="track" onclick="play(1)">
-<img src="capas/marilia.jpg">
-<div>
-<strong>Infiel</strong>
-<span>Marília Mendonça</span>
-</div>
-</div>
-
-
-<div class="track" onclick="play(2)">
-<img src="capas/cristiano.jpg">
-<div>
-<strong>Cê Que Sabe</strong>
-<span>Cristiano Araújo</span>
-</div>
-</div>
-</main>
-
-
-<footer class="player-footer">
-    <div class="now-playing">
-        <img src="img/logo.png" alt="Capa" id="player-album-art">
-        <div class="track-info">
-            <h4 id="track-title">Selecione uma música</h4>
-            <p id="track-artist">Assis Music</p>
-        </div>
-    </div>
-
-    <div class="player-controls">
-        <div class="control-buttons">
-            <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
-            <button id="play-btn" class="play-main"><i class="fas fa-play"></i></button>
-            <button id="next-btn"><i class="fas fa-step-forward"></i></button>
-        </div>
-        <div class="progress-bar-area">
-            <span id="current-time">0:00</span>
-            <div class="progress-container" id="progress-container">
-                <div class="progress-fill" id="progress-fill"></div>
+    <main class="container">
+        <div class="song-list">
+            <div class="song-item" onclick="playSong('assets/largado.mp3', 'Largado às Traças', 'Zé Neto & Cristiano', 'img/capa1.jpg')">
+                <img src="img/capa1.jpg" alt="Capa">
+                <div class="info">
+                    <strong>Largado às Traças</strong>
+                    <span>Zé Neto & Cristiano</span>
+                </div>
             </div>
-            <span id="total-duration">0:00</span>
-        </div>
-    </div>
 
-    <div class="volume-box">
-        <i class="fas fa-volume-up"></i>
-        <div class="volume-bar-bg">
-            <div class="volume-bar-fill" style="width: 80%;"></div>
+            <div class="song-item" onclick="playSong('assets/infiel.mp3', 'Infiel', 'Marília Mendonça', 'img/capa2.jpg')">
+                <img src="img/capa2.jpg" alt="Capa">
+                <div class="info">
+                    <strong>Infiel</strong>
+                    <span>Marília Mendonça</span>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
-    <audio id="main-audio" src=""></audio>
+    <footer class="player-footer">
+        <div class="now-playing">
+            <img src="img/logo.png" alt="Capa" id="player-album-art">
+            <div class="track-info">
+                <h4 id="player-title">Selecione uma música</h4>
+                <p id="player-artist">Assis Music</p>
+            </div>
+        </div>
+
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                <button id="play-btn" class="play-main"><i class="fas fa-play"></i></button>
+                <button id="next-btn"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="progress-bar-area">
+                <span id="current-time">0:00</span>
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span id="total-duration">0:00</span>
+            </div>
+        </div>
+
+        <audio id="main-audio" src=""></audio>
     </footer>
-  </html>
+
+    <script src="js/script.js"></script>
+</body>
+                    </html>
