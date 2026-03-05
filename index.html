@@ -75,5 +75,35 @@
 
 
 <script src="script.js"></script>
-</body>
+</body><footer class="main-player">
+    <div class="now-playing-info">
+        <img src="img/logo.png" alt="Capa" id="player-album-art">
+        <div class="track-details">
+            <h4 id="player-title">Selecione uma música</h4>
+            <p id="player-artist">Assis Music</p>
+        </div>
+    </div>
+
+    <div class="player-controls">
+        <div class="control-buttons">
+            <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+            <button id="play-btn" class="play-main"><i class="fas fa-play"></i></button>
+            <button id="next-btn"><i class="fas fa-step-forward"></i></button>
+        </div>
+        <div class="progress-wrapper">
+            <span id="current-time">0:00</span>
+            <div class="progress-bar-container" id="progress-container">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span id="total-duration">0:00</span>
+        </div>
+    </div>
+
+    <div class="volume-container">
+        <i class="fas fa-volume-up"></i>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.8">
+    </div>
+
+    <audio id="main-audio" src=""></audio>
+    </footer>
   </html>
