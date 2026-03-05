@@ -55,13 +55,23 @@
 <button onclick="toggle()">⏯</button>
 <button onclick="next()">⏭</button>
 </div>
-<div class="progress">
-<span id="currentTime">0:00</span>
-<input type="range" id="progressBar" value="0" min="0" max="100">
-<span id="duration">0:00</span>
+<div class="spotify-player">
+<div class="controls">
+<button id="prev"><i class="fas fa-step-backward"></i></button>
+<button id="play-pause"><i class="fas fa-play"></i></button>
+<button id="next"><i class="fas fa-step-forward"></i></button>
+    </div>
+    
+    <div class="progress-container">
+        <span id="current-time">0:00</span>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <span id="duration">0:00</span>
+    </div>
+    
+    <audio id="audio" src="sua-musica.mp3"></audio>
 </div>
-<audio id="audio"></audio>
-</footer>
 
 
 <script src="script.js"></script>
